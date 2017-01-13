@@ -34,8 +34,9 @@ The Username Token include timestamp y nonce.
             <wsu:Expired>2017-01-13T09:41:04Z</wsu:Expired>
          </wsu:Timestamp>
       </wsse:Security>
+
    
-   
+   Functional example in TestSoap-1.0.0.xml
 
 
 *****************
@@ -56,5 +57,10 @@ Copy target/utmediator-1.0.0.jar to $ESB_HOME/repository/components/dropins
 Configuration
 *****************
 
+
+*****************
+Examples
+*****************
+ TestSoap-1.0.0.xml  -> Simple proxy 
 
 
