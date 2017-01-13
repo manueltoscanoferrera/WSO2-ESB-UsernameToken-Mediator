@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Export-Package: org.codigolibre.utmediator;uses:="org.apache.commons.l
+ ogging,org.apache.commons.lang,javax.xml.datatype,javax.xml.namespace
+ ,org.apache.axiom.om,org.apache.axiom.soap,org.apache.synapse,org.apa
+ che.synapse.config.xml,org.apache.synapse.core,sun.misc,org.apache.sy
+ napse.mediators"
+Ignore-Package: javax.xml.namespace
+Built-By: mantos
+Tool: Bnd-0.0.255
+Bundle-Name: utmediator
+Created-By: Apache Maven Bundle Plugin
+Fragment-Host: synapse-core
+Build-Jdk: 1.7.0_51
+Bundle-Version: 1.0.0
+Bnd-LastModified: 1484299687904
+Bundle-ManifestVersion: 2
+Import-Package: javax.xml.datatype;resolution:=optional,javax.xml.name
+ space;resolution:=optional,org.apache.axiom.om;resolution:=optional,o
+ rg.apache.axiom.soap;resolution:=optional,org.apache.commons.lang;res
+ olution:=optional,org.apache.commons.logging;resolution:=optional,org
+ .apache.synapse;resolution:=optional,org.apache.synapse.config.xml;re
+ solution:=optional,org.apache.synapse.core;resolution:=optional,org.a
+ pache.synapse.mediators;resolution:=optional,org.codigolibre.utmediat
+ or;resolution:=optional,sun.misc;resolution:=optional
+Bundle-SymbolicName: utmediator
+
