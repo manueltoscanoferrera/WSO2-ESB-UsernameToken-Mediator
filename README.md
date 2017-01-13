@@ -6,13 +6,13 @@ The UTMediator has its own XML configuration. Tag format:
 ```
         <usernametoken user="value|expression" pass="value|expression"/>
  ```       
-user and pass: can be an expression or a value {$ctx:var1} or value1 
+user and pass: can be an expression or a value
         
   Example:
   
   Inside sequence:
   ```
-  	<property name="var2" value="password1"/>
+  	<property name="varWithPass1" value="password1"/>
     ..
     ..
    <usernametoken user="user1" pass="{$ctx:varWithPass1}"/>
