@@ -10,12 +10,12 @@ The Username Token include timestamp y nonce.
  
         <usernametoken user="value|expression" pass="value|expression"/>
         
-        user and pass: can be an expression or a value {$ctx:var1} or value1 
+        user and pass: can be an expression or a value 
         
   examples:
   
   Inside sequence:
-  	<property name="var2" value="password1"/>
+  	<property name="varWithPass1" value="password1"/>
     ..
     ..
    <usernametoken user="user1" pass="{$ctx:varWithPass1}"/>
@@ -34,8 +34,9 @@ The Username Token include timestamp y nonce.
             <wsu:Expired>2017-01-13T09:41:04Z</wsu:Expired>
          </wsu:Timestamp>
       </wsse:Security>
+
    
-   
+   Functional example in TestSoap-1.0.0.xml
 
 
 *****************
@@ -56,5 +57,10 @@ Copy target/utmediator-1.0.0.jar to $ESB_HOME/repository/components/dropins
 Configuration
 *****************
 
+
+*****************
+Examples
+*****************
+ TestSoap-1.0.0.xml  -> Simple proxy 
 
 
