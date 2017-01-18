@@ -214,7 +214,7 @@ public class UTMediator extends AbstractMediator implements ManagedLifecycle {
 				timestamp.addChild(createdTimeStamp);
 
 				OMElement expired = omFactory.createOMElement(new QName(
-						UTMediatorUtils.WS_SECUTILITY, "Expired", "wsu"));
+						UTMediatorUtils.WS_SECUTILITY, "Expires", "wsu"));
 				expired.setText(fiveMinutesLaterString);
 				timestamp.addChild(expired);
 

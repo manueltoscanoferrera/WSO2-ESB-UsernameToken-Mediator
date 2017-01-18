@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Export-Package: org.codigolibre.utmediator;uses:="org.apache.commons.l
- ogging,org.apache.commons.lang,javax.xml.datatype,javax.xml.namespace
- ,org.apache.axiom.om,org.apache.axiom.soap,org.apache.synapse,org.apa
+ ogging,org.apache.commons.lang,org.apache.axiom.om,javax.xml.namespac
+ e,javax.xml.datatype,org.apache.axiom.soap,org.apache.synapse,org.apa
  che.synapse.config.xml,org.apache.synapse.core,sun.misc,org.apache.sy
  napse.mediators"
 Ignore-Package: javax.xml.namespace
@@ -12,7 +12,7 @@ Created-By: Apache Maven Bundle Plugin
 Fragment-Host: synapse-core
 Build-Jdk: 1.7.0_51
 Bundle-Version: 1.0.0
-Bnd-LastModified: 1484299687904
+Bnd-LastModified: 1484757629080
 Bundle-ManifestVersion: 2
 Import-Package: javax.xml.datatype;resolution:=optional,javax.xml.name
  space;resolution:=optional,org.apache.axiom.om;resolution:=optional,o
