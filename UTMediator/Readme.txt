@@ -31,7 +31,7 @@ The Username Token include timestamp y nonce.
          </wsse:UsernameToken>
          <wsu:Timestamp wsu:Id="TS-1aecc878-9e77-4bff-be86-5d8ec74af2d9">
             <wsu:Created>2017-01-13T09:36:04Z</wsu:Created>
-            <wsu:Expired>2017-01-13T09:41:04Z</wsu:Expired>
+            <wsu:Expires>2017-01-13T09:41:04Z</wsu:Expires>
          </wsu:Timestamp>
       </wsse:Security>
 
