@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="c0a88aa2-8851-4fe3-9d03-866be698da25" activeEnvironment="Default" name="Project 3" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="4fce7f57-6794-4d1a-ae50-4b2f558106da" wsaVersion="NONE" name="echoSecureSoap11Binding" type="wsdl" bindingName="{http://echo.services.core.carbon.wso2.org}echoSecureSoap11Binding" soapVersion="1_1" anonymous="optional" definition="http://sdtpc301:8290/services/echoSecure?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://sdtpc301:8290/services/echoSecure?wsdl"><con:part><con:url>http://sdtpc301:8290/services/echoSecure?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://echo.services.core.carbon.wso2.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://echo.services.core.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ax2636="http://echo.services.core.carbon.wso2.org/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsp:Policy wsu:Id="UTOverTransport" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false"/>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256/>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Lax/>
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp/>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <sp:SignedSupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient"/>
+          </wsp:Policy>
+        </sp:SignedSupportingTokens>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:documentation>test</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="http://echo.services.core.carbon.wso2.org" xmlns:ax2637="http://echo.services.core.carbon.wso2.org/xsd">
+      <xs:element name="echoString">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="in" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="echoStringResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="echoStringRequest">
+    <wsdl:part name="parameters" element="ns:echoString"/>
+  </wsdl:message>
+  <wsdl:message name="echoStringResponse">
+    <wsdl:part name="parameters" element="ns:echoStringResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="echoSecurePortType">
+    <wsdl:operation name="echoString">
+      <wsdl:input message="ns:echoStringRequest" wsaw:Action="urn:echoString"/>
+      <wsdl:output message="ns:echoStringResponse" wsaw:Action="urn:echoStringResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="echoSecureSoap11Binding" type="ns:echoSecurePortType">
+    <wsp:PolicyReference URI="#UTOverTransport" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="echoString">
+      <soap:operation soapAction="urn:echoString" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="echoSecureSoap12Binding" type="ns:echoSecurePortType">
+    <wsp:PolicyReference URI="#UTOverTransport" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"/>
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="echoString">
+      <soap12:operation soapAction="urn:echoString" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="echoSecureHttpBinding" type="ns:echoSecurePortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="echoString">
+      <http:operation location="echoString"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="echoSecure">
+    <wsdl:port name="echoSecureHttpsSoap11Endpoint" binding="ns:echoSecureSoap11Binding">
+      <soap:address location="https://SDTPC301:8253/services/echoSecure.echoSecureHttpsSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="echoSecureHttpsSoap12Endpoint" binding="ns:echoSecureSoap12Binding">
+      <soap12:address location="https://SDTPC301:8253/services/echoSecure.echoSecureHttpsSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="echoSecureHttpsEndpoint" binding="ns:echoSecureHttpBinding">
+      <http:address location="https://SDTPC301:8253/services/echoSecure.echoSecureHttpsEndpoint"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://SDTPC301:8253/services/echoSecure.echoSecureHttpsSoap11Endpoint</con:endpoint></con:endpoints><con:operation id="3c118ead-8244-4824-9311-742a7cfc2d82" isOneWay="false" action="urn:echoString" name="echoString" bindingOperationName="echoString" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1552c2e8-867f-44f9-8b3b-095d4d8ebac5" name="Request 1" outgoingWss="as"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://SDTPC301:8253/services/echoSecure.echoSecureHttpsSoap11Endpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:echo="http://echo.services.core.carbon.wso2.org">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <echo:echoString>
+         <!--Optional:-->
+         <!--type: string-->
+         <in>gero et</in>
+      </echo:echoString>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:echoString"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="0764ed93-a298-48c1-b03f-dccad8e11542" wsaVersion="NONE" name="utmediatorSoap11Binding" type="wsdl" bindingName="{http://echo.services.core.carbon.wso2.org}utmediatorSoap11Binding" soapVersion="1_1" anonymous="optional" definition="http://sdtpc301:8290/services/utmediator?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://sdtpc301:8290/services/utmediator?wsdl"><con:part><con:url>http://sdtpc301:8290/services/utmediator?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://echo.services.core.carbon.wso2.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://echo.services.core.carbon.wso2.org" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ax2636="http://echo.services.core.carbon.wso2.org/xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:documentation>test</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="http://echo.services.core.carbon.wso2.org" xmlns:ax2637="http://echo.services.core.carbon.wso2.org/xsd">
+      <xs:element name="echoString">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="in" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="echoStringResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="echoStringRequest">
+    <wsdl:part name="parameters" element="ns:echoString"/>
+  </wsdl:message>
+  <wsdl:message name="echoStringResponse">
+    <wsdl:part name="parameters" element="ns:echoStringResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="utmediatorPortType">
+    <wsdl:operation name="echoString">
+      <wsdl:input message="ns:echoStringRequest" wsaw:Action="urn:echoString"/>
+      <wsdl:output message="ns:echoStringResponse" wsaw:Action="urn:echoStringResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="utmediatorSoap11Binding" type="ns:utmediatorPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="echoString">
+      <soap:operation soapAction="urn:echoString" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="utmediatorSoap12Binding" type="ns:utmediatorPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="echoString">
+      <soap12:operation soapAction="urn:echoString" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="utmediatorHttpBinding" type="ns:utmediatorPortType">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="echoString">
+      <http:operation location="echoString"/>
+      <wsdl:input>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content type="text/xml" part="parameters"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="utmediator">
+    <wsdl:port name="utmediatorHttpSoap11Endpoint" binding="ns:utmediatorSoap11Binding">
+      <soap:address location="http://SDTPC301:8290/services/utmediator.utmediatorHttpSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="utmediatorHttpsSoap11Endpoint" binding="ns:utmediatorSoap11Binding">
+      <soap:address location="https://SDTPC301:8253/services/utmediator.utmediatorHttpsSoap11Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="utmediatorHttpsSoap12Endpoint" binding="ns:utmediatorSoap12Binding">
+      <soap12:address location="https://SDTPC301:8253/services/utmediator.utmediatorHttpsSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="utmediatorHttpSoap12Endpoint" binding="ns:utmediatorSoap12Binding">
+      <soap12:address location="http://SDTPC301:8290/services/utmediator.utmediatorHttpSoap12Endpoint"/>
+    </wsdl:port>
+    <wsdl:port name="utmediatorHttpsEndpoint" binding="ns:utmediatorHttpBinding">
+      <http:address location="https://SDTPC301:8253/services/utmediator.utmediatorHttpsEndpoint"/>
+    </wsdl:port>
+    <wsdl:port name="utmediatorHttpEndpoint" binding="ns:utmediatorHttpBinding">
+      <http:address location="http://SDTPC301:8290/services/utmediator.utmediatorHttpEndpoint"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://SDTPC301:8290/services/utmediator.utmediatorHttpSoap11Endpoint</con:endpoint><con:endpoint>https://SDTPC301:8253/services/utmediator.utmediatorHttpsSoap11Endpoint</con:endpoint></con:endpoints><con:operation id="3e53d2e5-1f05-484c-aa47-289ecd52f1fa" isOneWay="false" action="urn:echoString" name="echoString" bindingOperationName="echoString" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d9308cc7-0a23-4329-ab30-5201589f2490" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://SDTPC301:8290/services/utmediator.utmediatorHttpSoap11Endpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:echo="http://echo.services.core.carbon.wso2.org">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <echo:echoString>
+         <!--Optional:-->
+         <!--type: string-->
+         <in>geroaaaas et</in>
+      </echo:echoString>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:echoString"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer><con:outgoing><con:name>as</con:name><con:entry type="Timestamp"><con:configuration><timeToLive>10</timeToLive><strictTimestamp>true</strictTimestamp></con:configuration></con:entry><con:entry type="Username" username="admin" password="admin"><con:configuration><addCreated>true</addCreated><addNonce>true</addNonce><passwordType>PasswordText</passwordType></con:configuration></con:entry></con:outgoing></con:wssContainer><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
