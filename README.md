@@ -1,5 +1,5 @@
 This custom WSO2 ESB Mediator insert a WSSecurity UserName Token in the current message.
-The Username Token include timestamp y nonce.
+The Username Token include timestamp and nonce.
  
 The UTMediator has its own XML configuration. Tag format:
 
